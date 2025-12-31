@@ -1,0 +1,133 @@
+/* ==================================================================
+   FICHIER STYLE.CSS - VERSION FINALE (CORRIGÉE)
+   ================================================================== */
+
+/* ==================================================================
+   1. CHARGEMENT DES POLICES
+   ================================================================== */
+@font-face {
+    font-family: 'PixelFont';
+    src: url('fonts/PressStart2P-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Orbitron';
+    src: url('fonts/Orbitron-VariableFont_wght.ttf');
+}
+
+/* ==================================================================
+   2. CONFIGURATION GLOBALE
+   ================================================================== */
+.root {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+/* ==================================================================
+   3. SCÈNE 1 : ÉCRAN D'ACCUEIL (MODERNE)
+   ================================================================== */
+.sous-titre-arabe {
+    -fx-text-fill: #f0f0f0;
+    -fx-font-family: "Segoe UI", "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 24px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.6), 3, 0.0, 1, 1);
+    -fx-alignment: CENTER;
+}
+
+.titre-principal {
+    -fx-text-fill: white;
+    -fx-font-family: 'Orbitron', 'Segoe UI Black';
+    -fx-font-size: 60px;
+    -fx-font-weight: 900;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.7), 25, 0.3, 0, 0);
+}
+
+.logo-flash {
+    -fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.9), 60, 0.6, 0, 0);
+}
+
+.btn-play {
+    -fx-background-color: linear-gradient(to right, #4cd137, #44bd32);
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+    -fx-font-family: 'Orbitron', 'Segoe UI Black';
+    -fx-font-size: 28px;
+    -fx-font-weight: 700;
+    -fx-pref-width: 300px;
+    -fx-pref-height: 70px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);
+}
+
+.btn-play:hover {
+    -fx-background-color: linear-gradient(to right, #5ce147, #54cd42);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.btn-play:pressed {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-effect: none;
+}
+
+.icone-bas {
+    -fx-cursor: hand;
+    -fx-opacity: 0.8;
+}
+
+.icone-bas:hover {
+    -fx-opacity: 1.0;
+    -fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.6), 15, 0, 0, 0);
+}
+
+/* ==================================================================
+   4. SCÈNE 2 : SÉLECTION MODE (ARCADE)
+   ================================================================== */
+
+/* --- C'EST ICI QUE VOUS AVIEZ L'ERREUR --- */
+/* Voici le VRAI code pour le cadre noir */
+.arcade-panel {
+    /* Superposition de 3 couleurs pour faire la double bordure : */
+    /* 1. Bleu Clair (Tout au fond) -> Bordure Extérieure */
+    /* 2. Bleu Foncé (Au milieu)    -> Bordure Intérieure */
+    /* 3. Noir (Devant)             -> Le fond du panneau */
+    -fx-background-color: #55aaff, #0000aa, #000000;
+    
+    /* Épaisseurs des bordures (Décalage par rapport au bord) */
+    /* 0px pour le bleu clair, 4px pour le bleu foncé, 8px pour le noir */
+    -fx-background-insets: 0, 4, 8;
+    
+    /* Marge intérieure pour ne pas coller le texte au bord */
+    -fx-padding: 30px;
+    
+    /* Légers arrondis */
+    -fx-background-radius: 6px;
+}
+
+/* Le Titre Dégradé */
+.arcade-title {
+    -fx-font-family: 'PixelFont';
+    -fx-font-size: 38px;
+    -fx-text-fill: linear-gradient(to bottom, #ffffff 0%, #ffcc00 50%, #ff9900 100%);
+    -fx-effect: dropshadow(one-pass-box, black, 4, 0, 4, 4);
+    -fx-alignment: CENTER;
+}
+
+/* Option 1P (Blanc) */
+.arcade-text-white {
+    -fx-font-family: 'PixelFont';
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+}
+
+/* Option 2P (Orange) */
+.arcade-text-orange {
+    -fx-font-family: 'PixelFont';
+    -fx-font-size: 20px;
+    -fx-text-fill: #ff9900;
+}

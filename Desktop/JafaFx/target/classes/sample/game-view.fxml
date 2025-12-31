@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<StackPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameController">
+   <children>
+      <!-- Background -->
+      <ImageView fitHeight="409.0" fitWidth="606.0" pickOnBounds="true">
+         <image>
+            <Image url="@images/Capture%20d'écran%202025-12-29%20120838.png" />
+         </image>
+      </ImageView>
+      
+      <VBox alignment="CENTER" spacing="15.0">
+         <padding>
+            <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+         </padding>
+         <children>
+            
+            <!-- Header avec lettre et timer -->
+            <HBox alignment="CENTER" spacing="30.0">
+               <children>
+                  <!-- Bouton retour -->
+                  <Button fx:id="backButton" onAction="#onBackClick" styleClass="btn-back" text="←" />
+                  
+                  <!-- Lettre actuelle -->
+                  <VBox alignment="CENTER" styleClass="letter-box">
+                     <children>
+                        <Label styleClass="letter-label" text="LETTRE" />
+                        <Label fx:id="currentLetterLabel" styleClass="letter-display" text="A" />
+                     </children>
+                  </VBox>
+                  
+                  <!-- Timer -->
+                  <VBox alignment="CENTER" styleClass="timer-box">
+                     <children>
+                        <Label styleClass="timer-label" text="TEMPS" />
+                        <Label fx:id="timerLabel" styleClass="timer-display" text="60" />
+                     </children>
+                  </VBox>
+                  
+                  <!-- Score -->
+                  <VBox alignment="CENTER" styleClass="score-box">
+                     <children>
+                        <Label styleClass="score-label" text="SCORE" />
+                        <Label fx:id="scoreLabel" styleClass="score-display" text="0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            
+            <!-- Grille des catégories -->
+            <GridPane fx:id="categoriesGrid" alignment="CENTER" hgap="10.0" vgap="8.0" styleClass="categories-grid">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="120.0" prefWidth="150.0" />
+                  <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" prefWidth="300.0" />
+               </columnConstraints>
+               <children>
+                  <!-- Pays -->
+                  <Label styleClass="category-label" text="Pays" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <TextField fx:id="paysField" styleClass="category-input" promptText="Entrez un pays..." GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                  
+                  <!-- Ville -->
+                  <Label styleClass="category-label" text="Ville" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <TextField fx:id="villeField" styleClass="category-input" promptText="Entrez une ville..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  
+                  <!-- Prénom -->
+                  <Label styleClass="category-label" text="Prénom" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                  <TextField fx:id="prenomField" styleClass="category-input" promptText="Entrez un prénom..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  
+                  <!-- Animal -->
+                  <Label styleClass="category-label" text="Animal" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                  <TextField fx:id="animalField" styleClass="category-input" promptText="Entrez un animal..." GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  
+                  <!-- Fruit -->
+                  <Label styleClass="category-label" text="Fruit/Légume" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                  <TextField fx:id="fruitField" styleClass="category-input" promptText="Entrez un fruit ou légume..." GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  
+                  <!-- Métier -->
+                  <Label styleClass="category-label" text="Métier" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                  <TextField fx:id="metierField" styleClass="category-input" promptText="Entrez un métier..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+            
+            <!-- Boutons d'action -->
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button fx:id="validateButton" onAction="#onValidateClick" styleClass="btn-validate" text="VALIDER" />
+                  <Button fx:id="nextRoundButton" onAction="#onNextRoundClick" styleClass="btn-next" text="TOUR SUIVANT" />
+               </children>
+            </HBox>
+            
+         </children>
+      </VBox>
+   </children>
+</StackPane>

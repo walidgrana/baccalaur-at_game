@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.InterfaceController">
+   <children>
+      <ImageView fitHeight="406.0" fitWidth="603.0" pickOnBounds="true">
+         <image>
+            <Image url="@images/Capture%20d'écran%202025-12-29%20120838.png" />
+         </image>
+      </ImageView>
+      <VBox alignment="TOP_CENTER" prefHeight="430.0" prefWidth="600.0" spacing="20.0">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titre-principal" text="Baccalauréat +">
+                     <font>
+                        <Font name="Arial Bold" size="33.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <ImageView fitHeight="75.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Capture_d_écran_2025-12-29_120904-removebg-preview.png" />
+               </image>
+               <effect>
+                  <DropShadow height="20.52" radius="14.2775" spread="0.06" width="38.59">
+                     <color>
+                        <Color blue="1.0" green="1.0" red="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </ImageView>
+            <Button fx:id="playButton" mnemonicParsing="false" onAction="#onPlayButtonClick" prefHeight="17.0" styleClass="btn-play" text="PLAY" />
+            <Region prefHeight="200.0" prefWidth="200.0" styleClass="VGrow" VBox.vgrow="ALWAYS" />
+            <HBox prefHeight="219.0" prefWidth="588.0">
+               <children>
+                  <ImageView fx:id="settingsButton" fitHeight="39.0" fitWidth="26.0" onMouseClicked="#onSettingsClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@images/image-removebg-preview%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Region prefHeight="46.0" prefWidth="526.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets top="50.0" />
+         </padding>
+      </VBox>
+   </children>
+</StackPane>
