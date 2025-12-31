@@ -5,12 +5,14 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
@@ -21,6 +23,9 @@ public class GameController implements Initializable {
     
     @FXML
     private StackPane rootPane;
+    
+    @FXML
+    private ImageView backgroundImage;
     
     @FXML
     private Label currentLetterLabel;
@@ -70,6 +75,9 @@ public class GameController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Écran de jeu chargé !");
+        
+        // Animation de l'arrière-plan
+        startBackgroundAnimation();
         
         // Démarrer une nouvelle partie
         startNewRound();
@@ -214,5 +222,46 @@ public class GameController implements Initializable {
             timer.stop();
         }
         SceneManager.goToModeSelection();
+    }
+    
+    /**
+     * Démarre l'animation de l'arrière-plan
+     */
+    private void startBackgroundAnimation() {
+        Timeline bgTimeline = new Timeline(
+            new KeyFrame(Duration.ZERO,
+                new KeyValue(backgroundImage.translateXProperty(), 0),
+                new KeyValue(backgroundImage.translateYProperty(), 0),
+                new KeyValue(backgroundImage.scaleXProperty(), 1.0),
+                new KeyValue(backgroundImage.scaleYProperty(), 1.0)
+            ),
+            new KeyFrame(Duration.seconds(4),
+                new KeyValue(backgroundImage.translateXProperty(), -15),
+                new KeyValue(backgroundImage.translateYProperty(), -10),
+                new KeyValue(backgroundImage.scaleXProperty(), 1.05),
+                new KeyValue(backgroundImage.scaleYProperty(), 1.05)
+            ),
+            new KeyFrame(Duration.seconds(8),
+                new KeyValue(backgroundImage.translateXProperty(), 10),
+                new KeyValue(backgroundImage.translateYProperty(), 5),
+                new KeyValue(backgroundImage.scaleXProperty(), 1.02),
+                new KeyValue(backgroundImage.scaleYProperty(), 1.02)
+            ),
+            new KeyFrame(Duration.seconds(12),
+                new KeyValue(backgroundImage.translateXProperty(), -5),
+                new KeyValue(backgroundImage.translateYProperty(), 8),
+                new KeyValue(backgroundImage.scaleXProperty(), 1.04),
+                new KeyValue(backgroundImage.scaleYProperty(), 1.04)
+            ),
+            new KeyFrame(Duration.seconds(16),
+                new KeyValue(backgroundImage.translateXProperty(), 0),
+                new KeyValue(backgroundImage.translateYProperty(), 0),
+                new KeyValue(backgroundImage.scaleXProperty(), 1.0),
+                new KeyValue(backgroundImage.scaleYProperty(), 1.0)
+            )
+        );
+        
+        bgTimeline.setCycleCount(Timeline.INDEFINITE);
+        bgTimeline.play();
     }
 }

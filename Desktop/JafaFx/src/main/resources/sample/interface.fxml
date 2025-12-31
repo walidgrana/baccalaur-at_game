@@ -20,26 +20,29 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextField?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.InterfaceController">
    <children>
-      <ImageView fitHeight="406.0" fitWidth="603.0" pickOnBounds="true">
+      <!-- Image de fond animée -->
+      <ImageView fx:id="backgroundImage" fitHeight="450.0" fitWidth="680.0" pickOnBounds="true" preserveRatio="false">
          <image>
             <Image url="@images/Capture%20d'écran%202025-12-29%20120838.png" />
          </image>
       </ImageView>
-      <VBox alignment="TOP_CENTER" prefHeight="430.0" prefWidth="600.0" spacing="20.0">
+      
+      <!-- Contenu principal avec BorderPane pour meilleure structure -->
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="15.0">
          <children>
-            <HBox alignment="CENTER">
-               <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titre-principal" text="Baccalauréat +">
-                     <font>
-                        <Font name="Arial Bold" size="33.0" />
-                     </font>
-                  </Text>
-               </children>
-            </HBox>
-            <ImageView fitHeight="75.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+            <!-- Titre -->
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titre-principal" text="Baccalauréat +">
+               <font>
+                  <Font name="Arial Bold" size="33.0" />
+               </font>
+            </Text>
+            
+            <!-- Logo -->
+            <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/Capture_d_écran_2025-12-29_120904-removebg-preview.png" />
                </image>
@@ -51,28 +54,32 @@
                   </DropShadow>
                </effect>
             </ImageView>
-            <Button fx:id="playButton" mnemonicParsing="false" onAction="#onPlayButtonClick" prefHeight="17.0" styleClass="btn-play" text="PLAY" />
-            <Region prefHeight="200.0" prefWidth="200.0" styleClass="VGrow" VBox.vgrow="ALWAYS" />
-            <HBox prefHeight="219.0" prefWidth="588.0">
-               <children>
-                  <ImageView fx:id="settingsButton" fitHeight="39.0" fitWidth="26.0" onMouseClicked="#onSettingsClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@images/image-removebg-preview%20(1).png" />
-                     </image>
-                  </ImageView>
-                  <Region prefHeight="46.0" prefWidth="526.0" HBox.hgrow="ALWAYS" />
-               </children>
-               <padding>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-               </padding>
-            </HBox>
+            
+            <!-- Espace flexible -->
+            <Region prefHeight="10.0" />
+            
+            <!-- Champ pseudo -->
+            <TextField fx:id="pseudoField" promptText="Entrez votre pseudo" styleClass="pseudo-input" maxWidth="280" alignment="CENTER" />
+            
+            <!-- Bouton PLAY -->
+            <Button fx:id="playButton" mnemonicParsing="false" onAction="#onPlayButtonClick" styleClass="btn-play" text="PLAY" disable="true" />
+            
+            <!-- Espace flexible pour pousser l'icône paramètres en bas -->
+            <Region VBox.vgrow="ALWAYS" />
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
          <padding>
-            <Insets top="50.0" />
+            <Insets top="30.0" bottom="10.0" left="20.0" right="20.0" />
          </padding>
       </VBox>
+      
+      <!-- Icône paramètres positionnée en bas à gauche -->
+      <ImageView fx:id="settingsButton" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#onSettingsClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" StackPane.alignment="BOTTOM_LEFT">
+         <image>
+            <Image url="@images/image-removebg-preview%20(1).png" />
+         </image>
+         <StackPane.margin>
+            <Insets bottom="15.0" left="15.0" />
+         </StackPane.margin>
+      </ImageView>
    </children>
 </StackPane>

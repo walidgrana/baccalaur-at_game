@@ -3,6 +3,9 @@ package sample;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -11,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 
 /**
  * Contrôleur pour l'écran de sélection de mode (selection-mode.fxml)
@@ -19,6 +23,9 @@ public class SelectionModeController implements Initializable {
     
     @FXML
     private StackPane rootPane;
+    
+    @FXML
+    private ImageView backgroundImage;
     
     @FXML
     private HBox singlePlayerBox;
@@ -44,12 +51,27 @@ public class SelectionModeController implements Initializable {
     @FXML
     private Label labelMulti;
     
+    @FXML
+    private Label backButton;
+    
     // 0 = Single Player, 1 = Multiplayer
     private int selectedOption = 0;
+    
+    /**
+     * Action du bouton retour - Retourne à la page d'accueil
+     */
+    @FXML
+    protected void onBackClick() {
+        System.out.println("Retour à la page d'accueil");
+        SceneManager.goToHome();
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Écran de sélection de mode chargé !");
+        
+        // Animation de l'arrière-plan
+        startBackgroundAnimation();
         
         // Mettre le focus sur le panneau pour recevoir les événements clavier
         rootPane.setFocusTraversable(true);
@@ -160,5 +182,46 @@ public class SelectionModeController implements Initializable {
     protected void onBackClick() {
         System.out.println("Retour à l'accueil");
         SceneManager.goToHome();
+    }
+    
+    /**
+     * Démarre l'animation de l'arrière-plan
+     */
+    private void startBackgroundAnimation() {
+        Timeline timeline = new Timeline(
+            new KeyFrame(Duration.ZERO,
+                new KeyValue(backgroundImage.translateXProperty(), 0),
+                new KeyValue(backgroundImage.translateYProperty(), 0),
+                new KeyValue(backgroundImage.scaleXProperty(), 1.0),
+                new KeyValue(backgroundImage.scaleYProperty(), 1.0)
+            ),
+            new KeyFrame(Duration.seconds(4),
+                new KeyValue(backgroundImage.translateXProperty(), -15),
+                new KeyValue(backgroundImage.translateYProperty(), -10),
+                new KeyValue(backgroundImage.scaleXProperty(), 1.05),
+                new KeyValue(backgroundImage.scaleYProperty(), 1.05)
+            ),
+            new KeyFrame(Duration.seconds(8),
+                new KeyValue(backgroundImage.translateXProperty(), 10),
+                new KeyValue(backgroundImage.translateYProperty(), 5),
+                new KeyValue(backgroundImage.scaleXProperty(), 1.02),
+                new KeyValue(backgroundImage.scaleYProperty(), 1.02)
+            ),
+            new KeyFrame(Duration.seconds(12),
+                new KeyValue(backgroundImage.translateXProperty(), -5),
+                new KeyValue(backgroundImage.translateYProperty(), 8),
+                new KeyValue(backgroundImage.scaleXProperty(), 1.04),
+                new KeyValue(backgroundImage.scaleYProperty(), 1.04)
+            ),
+            new KeyFrame(Duration.seconds(16),
+                new KeyValue(backgroundImage.translateXProperty(), 0),
+                new KeyValue(backgroundImage.translateYProperty(), 0),
+                new KeyValue(backgroundImage.scaleXProperty(), 1.0),
+                new KeyValue(backgroundImage.scaleYProperty(), 1.0)
+            )
+        );
+        
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 }

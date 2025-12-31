@@ -16,7 +16,8 @@
 
 <StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="Stylesheets" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SelectionModeController">
    <children>
-      <ImageView fitHeight="409.0" fitWidth="606.0" pickOnBounds="true">
+      <!-- Image de fond animée -->
+      <ImageView fx:id="backgroundImage" fitHeight="450.0" fitWidth="680.0" pickOnBounds="true">
          <image>
             <Image url="@images/Capture%20d'écran%202025-12-29%20120838.png" />
          </image>
@@ -56,5 +57,12 @@
             </HBox>
          </children>
       </VBox>
+      
+      <!-- Bouton retour positionné en bas à gauche (style arcade) -->
+      <Label fx:id="backButton" onMouseClicked="#onBackClick" styleClass="btn-back-icon" style="-fx-cursor: hand;" text="◀ BACK" StackPane.alignment="BOTTOM_LEFT">
+         <StackPane.margin>
+            <Insets bottom="15.0" left="15.0" />
+         </StackPane.margin>
+      </Label>
    </children>
 </StackPane>
