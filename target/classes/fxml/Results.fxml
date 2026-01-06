@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bac.controller.ResultsController"
+      alignment="CENTER" spacing="30" styleClass="main-container"
+      prefWidth="800" prefHeight="600">
+    
+    <padding>
+        <Insets bottom="40" left="40" right="40" top="40"/>
+    </padding>
+    
+    <!-- Titre -->
+    <VBox alignment="CENTER" spacing="10">
+        <Label fx:id="resultTitleLabel" text="🏆 Résultats" styleClass="label-title">
+            <font>
+                <Font size="36"/>
+            </font>
+        </Label>
+        <Label fx:id="letterUsedLabel" text="Lettre: A" style="-fx-text-fill: white; -fx-font-size: 18px;"/>
+    </VBox>
+    
+    <!-- Carte des résultats -->
+    <VBox styleClass="card" spacing="20" alignment="CENTER" VBox.vgrow="ALWAYS" maxWidth="700">
+        <padding>
+            <Insets bottom="30" left="30" right="30" top="30"/>
+        </padding>
+        
+        <!-- Score principal -->
+        <VBox alignment="CENTER" spacing="5">
+            <Label fx:id="scoreLabel" text="80" styleClass="score-label" style="-fx-font-size: 48px;"/>
+            <Label text="points" style="-fx-text-fill: #7f8c8d; -fx-font-size: 16px;"/>
+        </VBox>
+        
+        <Separator/>
+        
+        <!-- Détails des réponses -->
+        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" 
+                    style="-fx-background: transparent; -fx-background-color: transparent;">
+            <VBox fx:id="answersContainer" spacing="10" style="-fx-padding: 10;">
+                <!-- Réponses ajoutées dynamiquement -->
+            </VBox>
+        </ScrollPane>
+        
+        <Separator/>
+        
+        <!-- Statistiques -->
+        <HBox spacing="40" alignment="CENTER">
+            <VBox alignment="CENTER" spacing="5">
+                <Label fx:id="validCountLabel" text="6" style="-fx-text-fill: #27ae60; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+                <Label text="Mots valides" styleClass="label-category"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="5">
+                <Label fx:id="invalidCountLabel" text="2" style="-fx-text-fill: #e74c3c; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+                <Label text="Mots invalides" styleClass="label-category"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="5">
+                <Label fx:id="timeLabel" text="1:23" style="-fx-text-fill: #3498db; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+                <Label text="Temps" styleClass="label-category"/>
+            </VBox>
+        </HBox>
+    </VBox>
+    
+    <!-- Classement multijoueur (optionnel) -->
+    <VBox fx:id="rankingPane" styleClass="card" spacing="15" alignment="CENTER" 
+          visible="false" managed="false" maxWidth="500">
+        <padding>
+            <Insets bottom="20" left="20" right="20" top="20"/>
+        </padding>
+        
+        <Label text="🏅 Classement" styleClass="label-header"/>
+        <VBox fx:id="rankingContainer" spacing="8">
+            <!-- Classement dynamique -->
+        </VBox>
+    </VBox>
+    
+    <!-- Boutons -->
+    <HBox spacing="20" alignment="CENTER">
+        <Button text="🔄 Rejouer" styleClass="button, button-success, button-large"
+                onAction="#handleReplay"/>
+        <Button text="🏠 Menu principal" styleClass="button, button-primary, button-large"
+                onAction="#handleMainMenu"/>
+    </HBox>
+    
+</VBox>

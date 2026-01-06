@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bac.controller.HistoryController"
+      alignment="CENTER" spacing="20" styleClass="main-container"
+      prefWidth="1000" prefHeight="700">
+    
+    <padding>
+        <Insets bottom="30" left="30" right="30" top="30"/>
+    </padding>
+    
+    <!-- Titre -->
+    <Label text="📜 Historique des parties" styleClass="label-title">
+        <font>
+            <Font size="32"/>
+        </font>
+    </Label>
+    
+    <!-- Statistiques globales -->
+    <HBox spacing="30" alignment="CENTER">
+        <VBox styleClass="card" spacing="5" alignment="CENTER" prefWidth="180">
+            <padding>
+                <Insets bottom="15" left="15" right="15" top="15"/>
+            </padding>
+            <Label fx:id="totalGamesLabel" text="0" styleClass="score-label"/>
+            <Label text="Parties jouées" styleClass="label-category"/>
+        </VBox>
+        <VBox styleClass="card" spacing="5" alignment="CENTER" prefWidth="180">
+            <padding>
+                <Insets bottom="15" left="15" right="15" top="15"/>
+            </padding>
+            <Label fx:id="totalWinsLabel" text="0" style="-fx-text-fill: #27ae60; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Label text="Victoires" styleClass="label-category"/>
+        </VBox>
+        <VBox styleClass="card" spacing="5" alignment="CENTER" prefWidth="180">
+            <padding>
+                <Insets bottom="15" left="15" right="15" top="15"/>
+            </padding>
+            <Label fx:id="totalScoreLabel" text="0" style="-fx-text-fill: #3498db; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Label text="Score total" styleClass="label-category"/>
+        </VBox>
+        <VBox styleClass="card" spacing="5" alignment="CENTER" prefWidth="180">
+            <padding>
+                <Insets bottom="15" left="15" right="15" top="15"/>
+            </padding>
+            <Label fx:id="avgScoreLabel" text="0" style="-fx-text-fill: #f39c12; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Label text="Score moyen" styleClass="label-category"/>
+        </VBox>
+    </HBox>
+    
+    <!-- Contenu principal : Tableau + Détails -->
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+        
+        <!-- Tableau des parties -->
+        <VBox styleClass="card" spacing="15" HBox.hgrow="ALWAYS" maxWidth="600">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20"/>
+            </padding>
+            
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="📅 Dernières parties" styleClass="label-header"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="🔄 Actualiser" styleClass="button, button-secondary"
+                        onAction="#handleRefresh"/>
+            </HBox>
+            
+            <TableView fx:id="historyTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="dateColumn" text="Date" prefWidth="130"/>
+                    <TableColumn fx:id="modeColumn" text="Mode" prefWidth="70"/>
+                    <TableColumn fx:id="letterColumn" text="Lettre" prefWidth="60"/>
+                    <TableColumn fx:id="scoreColumn" text="Score" prefWidth="70"/>
+                    <TableColumn fx:id="validWordsColumn" text="Mots ✓" prefWidth="70"/>
+                    <TableColumn fx:id="resultColumn" text="Résultat" prefWidth="100"/>
+                </columns>
+                <placeholder>
+                    <Label text="🎮 Aucune partie jouée encore. Lancez-vous !" 
+                           style="-fx-font-size: 14px; -fx-text-fill: #95a5a6;"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+        
+        <!-- Panneau des détails -->
+        <VBox fx:id="detailsPane" styleClass="card" spacing="10" prefWidth="350" minWidth="300">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20"/>
+            </padding>
+            <Label text="Sélectionnez une partie pour voir les détails" 
+                   style="-fx-text-fill: #95a5a6; -fx-font-style: italic;"/>
+        </VBox>
+    </HBox>
+    
+    <!-- Bouton retour -->
+    <Button text="🏠 Retour au menu" styleClass="button, button-primary, button-large"
+            onAction="#handleBack"/>
+    
+</VBox>

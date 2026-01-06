@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- SQLite Database Connection -->
+        <property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
+        <property name="hibernate.connection.url">jdbc:sqlite:baccalaureat.db</property>
+        <property name="hibernate.dialect">org.hibernate.community.dialect.SQLiteDialect</property>
+        
+        <!-- Pool Configuration -->
+        <property name="hibernate.connection.pool_size">1</property>
+        
+        <!-- SQL Debugging -->
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">true</property>
+        
+        <!-- Auto Schema Generation - update keeps existing data -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        
+        <!-- Disable batch processing for SQLite -->
+        <property name="hibernate.jdbc.batch_size">0</property>
+        
+        <!-- Current session context -->
+        <property name="hibernate.current_session_context_class">thread</property>
+        
+        <!-- Entity Mappings -->
+        <mapping class="com.bac.model.entity.Player"/>
+        <mapping class="com.bac.model.entity.Category"/>
+        <mapping class="com.bac.model.entity.Word"/>
+        <mapping class="com.bac.model.entity.GameSession"/>
+        <mapping class="com.bac.model.entity.GameResult"/>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bac.controller.LobbyController"
+      alignment="CENTER" spacing="30" styleClass="main-container"
+      prefWidth="800" prefHeight="600">
+    
+    <padding>
+        <Insets bottom="40" left="40" right="40" top="40"/>
+    </padding>
+    
+    <!-- Titre -->
+    <VBox alignment="CENTER" spacing="10">
+        <Label text="👥 Salle d'attente" styleClass="label-title">
+            <font>
+                <Font size="36"/>
+            </font>
+        </Label>
+        <Label fx:id="statusLabel" text="En attente de joueurs..." 
+               style="-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 16px;"/>
+    </VBox>
+    
+    <!-- Carte principale -->
+    <HBox spacing="20" alignment="CENTER">
+        
+        <!-- Info de la partie -->
+        <VBox styleClass="card" spacing="20" alignment="CENTER" prefWidth="350">
+            <padding>
+                <Insets bottom="30" left="30" right="30" top="30"/>
+            </padding>
+            
+            <Label text="Code de la partie" styleClass="label-category"/>
+            <Label fx:id="sessionCodeLabel" text="ABC123" 
+                   style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+            <Label text="Partagez ce code avec vos amis" 
+                   style="-fx-text-fill: #7f8c8d; -fx-font-size: 12px;"/>
+            
+            <Separator/>
+            
+            <HBox spacing="30" alignment="CENTER">
+                <VBox alignment="CENTER" spacing="5">
+                    <Label text="Lettre" styleClass="label-category"/>
+                    <Label fx:id="letterLabel" text="?" 
+                           style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2ecc71;"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="5">
+                    <Label text="Catégories" styleClass="label-category"/>
+                    <Label fx:id="categoriesCountLabel" text="8" 
+                           style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="5">
+                    <Label text="Temps" styleClass="label-category"/>
+                    <Label fx:id="timeLimitLabel" text="2:00" 
+                           style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #f39c12;"/>
+                </VBox>
+            </HBox>
+        </VBox>
+        
+        <!-- Liste des joueurs -->
+        <VBox styleClass="card" spacing="15" alignment="CENTER" prefWidth="300" prefHeight="300">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20"/>
+            </padding>
+            
+            <Label text="Joueurs connectés" styleClass="label-header" style="-fx-font-size: 18px;"/>
+            <Separator/>
+            
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                        style="-fx-background: transparent; -fx-background-color: transparent;">
+                <VBox fx:id="playersContainer" spacing="10">
+                    <!-- Joueurs ajoutés dynamiquement -->
+                </VBox>
+            </ScrollPane>
+            
+            <Label fx:id="playerCountLabel" text="1/10 joueurs" 
+                   style="-fx-text-fill: #7f8c8d; -fx-font-size: 12px;"/>
+        </VBox>
+    </HBox>
+    
+    <!-- Zone de saisie du code (pour rejoindre) -->
+    <HBox fx:id="joinPane" spacing="10" alignment="CENTER" visible="false" managed="false">
+        <TextField fx:id="codeField" promptText="Entrez le code..." 
+                   prefWidth="200" styleClass="text-field"
+                   style="-fx-font-size: 18px; -fx-alignment: center;"/>
+        <Button text="Rejoindre" styleClass="button, button-success"
+                onAction="#handleJoinWithCode"/>
+    </HBox>
+    
+    <!-- Message d'erreur -->
+    <Label fx:id="errorLabel" text="" styleClass="message-error" 
+           visible="false" managed="false"/>
+    
+    <!-- Boutons -->
+    <HBox spacing="20" alignment="CENTER">
+        <Button fx:id="startButton" text="🚀 Lancer la partie" 
+                styleClass="button, button-success, button-large"
+                onAction="#handleStartGame" visible="false" managed="false"/>
+        <Button text="❌ Quitter" styleClass="button, button-danger"
+                onAction="#handleQuit"/>
+    </HBox>
+    
+</VBox>

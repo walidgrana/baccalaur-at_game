@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.bac.controller.LoginController"
+      alignment="CENTER" spacing="30" styleClass="main-container"
+      prefWidth="800" prefHeight="600">
+    
+    <padding>
+        <Insets bottom="50" left="50" right="50" top="50"/>
+    </padding>
+    
+    <!-- Logo et Titre -->
+    <VBox alignment="CENTER" spacing="10">
+        <Label text="🎮 Baccalauréat+" styleClass="label-title">
+            <font>
+                <Font size="48"/>
+            </font>
+        </Label>
+        <Label text="لعبة الحروف" styleClass="label-subtitle">
+            <font>
+                <Font size="24"/>
+            </font>
+        </Label>
+    </VBox>
+    
+    <!-- Carte de connexion -->
+    <VBox styleClass="card" spacing="20" alignment="CENTER" maxWidth="400">
+        <padding>
+            <Insets bottom="30" left="40" right="40" top="30"/>
+        </padding>
+        
+        <Label text="Entrez votre pseudo" styleClass="label-header"/>
+        
+        <TextField fx:id="pseudoField" promptText="Votre pseudo..." 
+                   prefWidth="300" styleClass="text-field">
+            <font>
+                <Font size="16"/>
+            </font>
+        </TextField>
+        
+        <Label fx:id="errorLabel" text="" styleClass="message-error" 
+               visible="false" managed="false"/>
+        
+        <Button fx:id="loginButton" text="Jouer" 
+                styleClass="button, button-primary, button-large"
+                onAction="#handleLogin"/>
+        
+        <Separator/>
+        
+        <Label text="Statistiques du joueur" styleClass="label-category"/>
+        
+        <HBox spacing="30" alignment="CENTER">
+            <VBox alignment="CENTER" spacing="5">
+                <Label fx:id="gamesPlayedLabel" text="0" styleClass="score-label"/>
+                <Label text="Parties" styleClass="label-category"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="5">
+                <Label fx:id="winsLabel" text="0" styleClass="score-label"/>
+                <Label text="Victoires" styleClass="label-category"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="5">
+                <Label fx:id="totalScoreLabel" text="0" styleClass="score-label"/>
+                <Label text="Score total" styleClass="label-category"/>
+            </VBox>
+        </HBox>
+    </VBox>
+    
+    <!-- Version -->
+    <Label text="Version 1.0 - © 2025" style="-fx-text-fill: rgba(255,255,255,0.6);"/>
+    
+</VBox>

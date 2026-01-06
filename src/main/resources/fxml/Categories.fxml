@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bac.controller.CategoriesController"
+      alignment="CENTER" spacing="20" styleClass="main-container"
+      prefWidth="800" prefHeight="600">
+    
+    <padding>
+        <Insets bottom="30" left="30" right="30" top="30"/>
+    </padding>
+    
+    <!-- Titre -->
+    <Label text="📂 Gestion des Catégories" styleClass="label-title">
+        <font>
+            <Font size="32"/>
+        </font>
+    </Label>
+    
+    <!-- Carte principale -->
+    <VBox styleClass="card" spacing="20" VBox.vgrow="ALWAYS" maxWidth="600">
+        <padding>
+            <Insets bottom="20" left="20" right="20" top="20"/>
+        </padding>
+        
+        <!-- Ajouter une catégorie -->
+        <HBox spacing="10" alignment="CENTER">
+            <TextField fx:id="newCategoryField" promptText="Nouvelle catégorie..." 
+                       HBox.hgrow="ALWAYS" styleClass="text-field"/>
+            <Button text="➕ Ajouter" styleClass="button, button-success"
+                    onAction="#handleAddCategory"/>
+        </HBox>
+        
+        <Separator/>
+        
+        <!-- Liste des catégories -->
+        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                    style="-fx-background: transparent; -fx-background-color: transparent;">
+            <VBox fx:id="categoriesContainer" spacing="10">
+                <!-- Catégories ajoutées dynamiquement -->
+            </VBox>
+        </ScrollPane>
+        
+        <Separator/>
+        
+        <!-- Info -->
+        <Label fx:id="infoLabel" text="8 catégories actives" 
+               style="-fx-text-fill: #7f8c8d; -fx-font-size: 14px;"/>
+    </VBox>
+    
+    <!-- Boutons -->
+    <HBox spacing="20" alignment="CENTER">
+        <Button text="🔄 Réinitialiser" styleClass="button, button-secondary"
+                onAction="#handleReset"/>
+        <Button text="🏠 Retour" styleClass="button, button-primary"
+                onAction="#handleBack"/>
+    </HBox>
+    
+</VBox>

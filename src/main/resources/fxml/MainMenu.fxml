@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bac.controller.MainMenuController"
+            styleClass="main-container" prefWidth="900" prefHeight="650">
+    
+    <!-- En-tête -->
+    <top>
+        <HBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+            <Label text="🎮 Baccalauréat+" styleClass="label-title">
+                <font>
+                    <Font size="36"/>
+                </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS"/>
+            <VBox alignment="CENTER_RIGHT">
+                <Label fx:id="welcomeLabel" text="Bienvenue, Joueur" style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+                <Button fx:id="logoutButton" text="Déconnexion" styleClass="button, button-secondary"
+                        onAction="#handleLogout" style="-fx-font-size: 12px; -fx-padding: 5 10;"/>
+            </VBox>
+        </HBox>
+    </top>
+    
+    <!-- Contenu principal -->
+    <center>
+        <HBox alignment="CENTER" spacing="30">
+            <padding>
+                <Insets bottom="30" left="30" right="30" top="30"/>
+            </padding>
+            
+            <!-- Mode Solo -->
+            <VBox styleClass="card" spacing="20" alignment="CENTER" prefWidth="350">
+                <padding>
+                    <Insets bottom="30" left="30" right="30" top="30"/>
+                </padding>
+                
+                <Label text="🎯" style="-fx-font-size: 48px;"/>
+                <Label text="Mode Solo" styleClass="label-header"/>
+                <Label text="Jouez seul contre vous-même.\nAméliorez votre vocabulaire\net battez vos records!" 
+                       textAlignment="CENTER" style="-fx-text-fill: #7f8c8d; -fx-font-size: 14px;"/>
+                
+                <Button text="Jouer en Solo" styleClass="button, button-success, button-large"
+                        onAction="#handleSoloGame"/>
+            </VBox>
+            
+            <!-- Mode Multijoueur -->
+            <VBox styleClass="card" spacing="20" alignment="CENTER" prefWidth="350">
+                <padding>
+                    <Insets bottom="30" left="30" right="30" top="30"/>
+                </padding>
+                
+                <Label text="👥" style="-fx-font-size: 48px;"/>
+                <Label text="Mode Multijoueur" styleClass="label-header"/>
+                <Label text="Affrontez d'autres joueurs\nen temps réel !\nCréez ou rejoignez une partie." 
+                       textAlignment="CENTER" style="-fx-text-fill: #7f8c8d; -fx-font-size: 14px;"/>
+                
+                <HBox spacing="10" alignment="CENTER">
+                    <Button text="Créer" styleClass="button, button-primary"
+                            onAction="#handleCreateMultiplayer"/>
+                    <Button text="Rejoindre" styleClass="button, button-secondary"
+                            onAction="#handleJoinMultiplayer"/>
+                </HBox>
+            </VBox>
+        </HBox>
+    </center>
+    
+    <!-- Bas de page avec options -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+            <Button text="📜 Historique" styleClass="button, button-secondary"
+                    onAction="#handleHistory"/>
+            <Button text="📂 Catégories" styleClass="button, button-secondary"
+                    onAction="#handleCategories"/>
+        </HBox>
+    </bottom>
+    
+</BorderPane>
